@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -14,49 +14,58 @@ return {
   },
 
   {
-    'mrcjkb/rustaceanvim',
-    version = '^6', -- Recommended
+    "mrcjkb/rustaceanvim",
+    version = "^6", -- Recommended
     lazy = false, -- This plugin is already lazy
   },
 
   {
-    'rust-lang/rust.vim',
-    ft = 'rust',
-    init = function ()
+    "rust-lang/rust.vim",
+    ft = "rust",
+    init = function()
       vim.g.rustfmt_autosave = 1
-    end
+    end,
   },
 
   {
-    'saecki/crates.nvim',
-    ft = 'toml',
+    "saecki/crates.nvim",
+    ft = "toml",
     config = function()
-      require('crates').setup {
+      require("crates").setup {
         completion = {
           cmp = {
-            enabled = true
+            enabled = true,
           },
         },
       }
-      require('cmp').setup.buffer({
-        sources = { { name = 'crates' } }
-      })
-    end
+      require("cmp").setup.buffer {
+        sources = { { name = "crates" } },
+      }
+    end,
   },
 
   {
     "petertriho/nvim-scrollbar",
     config = function()
       require("scrollbar").setup()
-    end
+    end,
   },
 
   {
     "mason-org/mason.nvim",
     opts = {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
       ensure_installed = {
         "pyright",
-        "prettier"
+        "prettier",
+        "csharpier",
+        "roslyn",
+        "rzls",
+        "typescript-language-server",
+        "rust-analyzer",
       },
     },
   },
@@ -67,18 +76,49 @@ return {
     opts = {},
   },
 
-
+  {
+    "seblyng/roslyn.nvim",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    ft = { "cs", "razor" },
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+    },
+  },
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "python",
+        "c_sharp",
+        "luadoc",
+        "typescript",
+        "printf",
+        "razor",
+      },
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = {
+        adaptive_size = true,
+      },
+    },
+  },
+
+  {
+    "folke/which-key.nvim",
+    lazy = false,
+  },
 }

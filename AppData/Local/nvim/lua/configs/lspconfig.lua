@@ -1,10 +1,10 @@
 require("nvchad.configs.lspconfig").defaults()
 
 vim.lsp.config("pyright", {
-  filetypes = {"python"}
+  filetypes = { "python" },
 })
 
--- read :h vim.lsp.config for changing options of lsp servers 
+-- read :h vim.lsp.config for changing options of lsp servers
 
 require("typescript-tools").setup {}
 
@@ -21,7 +21,7 @@ vim.lsp.config("emmet_language_server", {
     "pug",
     "sass",
     "scss",
-    "typescriptreact"
+    "typescriptreact",
   },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
   -- **Note:** only the options listed in the table are supported.
@@ -45,6 +45,7 @@ vim.lsp.config("emmet_language_server", {
   },
 })
 
-local servers = { "html", "cssls", "pyright", "emmet_language_server" }
-vim.lsp.enable(servers)
+vim.lsp.config("roslyn", {})
 
+local servers = { "html", "cssls", "pyright", "emmet_language_server", "roslyn" }
+vim.lsp.enable(servers)
