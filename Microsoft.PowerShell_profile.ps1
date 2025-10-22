@@ -13,11 +13,23 @@ function LsForce {
 New-Alias ls LsForce
 
 New-Alias k kubectl
-$env:KUBE_EDITOR="nvim"
+$env:KUBE_EDITOR="vim"
+
+function OpenGlazeConfig {
+  nvim C:\Users\markv\.glzr\glazewm\config.yaml
+}
+
+New-Alias glazec OpenGlazeConfig
+
+function OpenZebarConfig {
+  nvim C:\Users\markv\.glzr\zebar\settings.json
+}
+
+New-Alias zebarc OpenZebarConfig
 
 set-psreadlineoption -PredictionViewStyle ListView
 
-#oh-my-posh init pwsh | Invoke-Expression
+oh-my-posh init pwsh | Invoke-Expression
 #oh-my-posh init pwsh --config 'C:\Users\markv\AppData\Local\Programs\oh-my-posh\themes\stelbent.minimal.omp.json' | Invoke-Expression
 
 # Import the Chocolatey Profile that contains the necessary code to enable
@@ -30,4 +42,4 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-Invoke-Expression (&starship init powershell)
+#Invoke-Expression (&starship init powershell)
