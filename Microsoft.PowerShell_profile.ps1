@@ -13,7 +13,7 @@ function LsForce {
 New-Alias ls LsForce
 
 New-Alias k kubectl
-$env:KUBE_EDITOR="vim"
+$env:KUBE_EDITOR="nvim"
 
 set-psreadlineoption -PredictionViewStyle ListView
 
