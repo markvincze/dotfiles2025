@@ -28,3 +28,16 @@ map("n", "j", "gj", { desc = "Move down in display lines" })
 map("n", "k", "gk", { desc = "Move up in display lines" })
 map("n", "gj", "j", { desc = "Move down in physical line" })
 map("n", "gk", "k", { desc = "Move up in physical lines" })
+
+map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code Action" })
+map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename Symbol" })
+
+map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Go to implementation" })
+
+-- map("n", "<C-`>", function()
+--   require("nvchad.term").new { pos = "sp" }
+-- end, { desc = "terminal new horizontal term" })
+
+map({ "n", "t" }, "<C-t>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "terminal toggleable horizontal term" })
