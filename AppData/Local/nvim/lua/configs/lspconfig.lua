@@ -45,7 +45,40 @@ vim.lsp.config("emmet_language_server", {
   },
 })
 
-vim.lsp.config("roslyn", {})
+vim.lsp.config("roslyn", {
+  settings = {
+    ["csharp|background_analysis"] = {
+      dotnet_analyzer_diagnostics_scope = "fullSolution",
+      dotnet_compiler_diagnostics_scope = "fullSolution",
+    },
+  },
+})
 
-local servers = { "html", "cssls", "pyright", "emmet_language_server", "roslyn" }
+vim.lsp.config("gopls", {
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  -- root_dir = vim.lsp.config.util.root_pattern("go.work", "go.mod", ".git"),
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      completeUnimported = true,
+      usePlaceholders = true,
+    },
+  },
+})
+
+vim.lsp.config("protols", {
+  before_init = function(_, config)
+    config.init_options = {
+      include_paths = {
+        "C:/Tools/protoc/include",
+      }
+    }
+  end,
+})
+
+local servers = { "html", "cssls", "pyright", "emmet_language_server", "roslyn", "gopls", "protols", "kotlin" }
 vim.lsp.enable(servers)

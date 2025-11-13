@@ -46,3 +46,12 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.softtabstop = 4
   end,
 })
+
+require("telescope").setup {
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      "__snapshots__",
+    },
+  },
+}

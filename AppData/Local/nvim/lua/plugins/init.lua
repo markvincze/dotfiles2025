@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
+    --event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -82,6 +82,7 @@ return {
     ---@type RoslynNvimConfig
     ft = { "cs", "razor" },
     opts = {
+      filewatching = "roslyn",
       -- your configuration comes here; leave empty for default settings
     },
   },
@@ -114,6 +115,9 @@ return {
       view = {
         adaptive_size = true,
       },
+      git = {
+        ignore = false,
+      }
     },
   },
 
@@ -121,4 +125,27 @@ return {
     "folke/which-key.nvim",
     lazy = false,
   },
-}
+
+  {
+      "AlexandrosAlexiou/kotlin.nvim",
+      ft = { "kotlin" },
+      dependencies = { "mason.nvim", "mason-lspconfig.nvim", "oil.nvim" },
+      config = function()
+          require("kotlin").setup {
+              -- Optional: Specify root markers for multi-module projects
+              root_markers = {
+                  "gradlew",
+                  ".git",
+                  "mvnw",
+                  "settings.gradle",
+              },
+              -- Optional: Specify a custom Java path to run the server
+              -- jre_path = os.getenv("JDK21"),
+              -- Optional: Specify additional JVM arguments
+              jvm_args = {
+                  "-Xmx4g",
+              },
+          }
+      end,
+  },
+  }

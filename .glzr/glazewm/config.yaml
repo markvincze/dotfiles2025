@@ -96,8 +96,8 @@ window_effects:
       enabled: false
       style: 'square'
     transparency:
-      enabled: false
-      opacity: '60%'
+      enabled: true
+      opacity: '80%'
       match:
         # Only apply to terminal windows.
         - window_process: { equals: 'WindowsTerminal' }
@@ -171,6 +171,8 @@ window_rules:
       - window_class: { regex: 'HwndWrapper\[CamtasiaRecorder\.exe.*\]' }
       # Qbittorrent update and download dialog
       - window_title: { equals: 'qBittorrent Update Available' }
+      - window_process: { includes: 'paintdotnet' }
+      - window_process: { includes: 'Calculator' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.

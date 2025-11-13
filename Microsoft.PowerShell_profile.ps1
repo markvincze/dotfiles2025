@@ -4,13 +4,13 @@ Import-Module z
 
 Remove-Item alias:rm
 Remove-Item alias:where -Force
-Remove-Item alias:ls
+# Remove-Item alias:ls
 
-function LsForce {
-    Get-ChildItem -Force
-}
-
-New-Alias ls LsForce
+# function LsForce {
+#     Get-ChildItem -Force
+# }
+#
+# New-Alias ls LsForce
 
 New-Alias k kubectl
 $env:KUBE_EDITOR="vim"
@@ -26,6 +26,12 @@ function OpenZebarConfig {
 }
 
 New-Alias zebarc OpenZebarConfig
+
+function OpenNvimConfig {
+  nvim -c "cd C:\Users\markv\AppData\Local\nvim\" -c "NvimTreeFocus" C:\Users\markv\AppData\Local\nvim\init.lua
+}
+
+New-Alias nvimc OpenNvimConfig
 
 set-psreadlineoption -PredictionViewStyle ListView
 
