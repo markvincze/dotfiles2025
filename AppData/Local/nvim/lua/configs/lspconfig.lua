@@ -80,5 +80,5 @@ vim.lsp.config("protols", {
   end,
 })
 
-local servers = { "html", "cssls", "pyright", "emmet_language_server", "roslyn", "gopls", "protols", "kotlin" }
+local servers = { "html", "cssls", "pyright", "emmet_language_server", "roslyn", "gopls", "golangci-lint-langserver", "protols", "kotlin" }
 vim.lsp.enable(servers)

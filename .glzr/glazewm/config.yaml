@@ -62,9 +62,6 @@ window_effects:
       enabled: true
       #color: '#8dbcff'
       color: '#dd0099'
-      match:
-        # Only apply to terminal windows.
-        - window_process: { equals: 'WindowsTerminal' }
 
     # Remove the title bar from the window's frame. Note that this can
     # cause rendering issues for some applications.
@@ -165,7 +162,7 @@ window_rules:
       # Visual Studio windows
       - window_title: { equals: 'Search' } # Ctrl+T search popup
         window_process: { equals: 'devenv.exe' }
-      - window_title: { equals: 'Microsoft Visual Studio' } # Modifield file close confirmation window
+      - window_title: { equals: 'Microsoft Visual Studio' } # Modified file close confirmation window
         window_class: { equals: 'HwndWrapper[DefaultDomain;;ed9fa1bb-43a5-4107-85a5-9f333908db16]' }
       # Camtasia recorder
       - window_class: { regex: 'HwndWrapper\[CamtasiaRecorder\.exe.*\]' }
@@ -173,6 +170,8 @@ window_rules:
       - window_title: { equals: 'qBittorrent Update Available' }
       - window_process: { includes: 'paintdotnet' }
       - window_process: { includes: 'Calculator' }
+      # Ignores any Loom windows
+      - window_process: { equals: 'Loom' }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.

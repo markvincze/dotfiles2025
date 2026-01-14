@@ -66,6 +66,7 @@ return {
         "rzls",
         "typescript-language-server",
         "rust-analyzer",
+        "golangci-lint"
       },
     },
   },
@@ -124,28 +125,32 @@ return {
   {
     "folke/which-key.nvim",
     lazy = false,
-  },
-
-  {
-      "AlexandrosAlexiou/kotlin.nvim",
-      ft = { "kotlin" },
-      dependencies = { "mason.nvim", "mason-lspconfig.nvim", "oil.nvim" },
-      config = function()
-          require("kotlin").setup {
-              -- Optional: Specify root markers for multi-module projects
-              root_markers = {
-                  "gradlew",
-                  ".git",
-                  "mvnw",
-                  "settings.gradle",
-              },
-              -- Optional: Specify a custom Java path to run the server
-              -- jre_path = os.getenv("JDK21"),
-              -- Optional: Specify additional JVM arguments
-              jvm_args = {
-                  "-Xmx4g",
-              },
-          }
-      end,
-  },
   }
+
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   lazy = true,
+  --   event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+  --   config = function()
+  --       local lint = require("lint")
+  --
+  --       lint.linters_by_ft = {
+  --           go = { "golangcilint" },
+  --       }
+  --
+  --       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+  --
+  --       vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+  --           group = lint_augroup,
+  --           callback = function()
+  --               lint.try_lint()
+  --           end,
+  --       })
+  --
+  --       vim.keymap.set("n", "<leader>li", function()
+  --           lint.try_lint()
+  --       end, { desc = "Trigger linting for current file" })
+  --   end,
+  -- }
+
+}
